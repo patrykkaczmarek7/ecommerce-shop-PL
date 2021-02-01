@@ -6,6 +6,22 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
+.woodbtn {
+  color: white;
+  background:url(https://latitudo.org/upload/resize_cache/iblock/036/400_400_140cd750bba9870f18aada2478b24840a/03667702d3e38d534114e83060db6ae9.jpg) no-repeat;
+  width: 100px;
+  height: 50px;
+  border-radius: 25px;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+}
+
+.woodbtn:hover {
+  color: white;
+  text-decoration: none;
+}
+
 a {
   color: inherit;
   text-decoration: none;
