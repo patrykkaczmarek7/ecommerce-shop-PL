@@ -58,7 +58,7 @@ const DetailProduct = (props) => {
                     {product.content}
                 </div>
 
-                <button type="button" className="btn btn-dark d-block my-3 px-5"
+                <button type="button" className="btn btn-success d-block my-3 px-5"
                 onClick={() => dispatch(addToCart(product, cart))} >
                     Kup
                 </button>
