@@ -10,30 +10,6 @@ const Home = () => {
       </Head>
       <div className="row">
         {/* 1 column */}
-        <div className="col-md w-100" style={{height: "85vh"}}>
-          <button
-            title="kontakt"
-            className="woodbtn"
-            >
-              <Link href="/contact">
-              <a className="woodbtn">kontakt</a>
-              </Link>
-          </button>
-          <button
-            title="produkty"
-            className="woodbtn"
-            >
-              <Link href="/products">
-              <a className="woodbtn">produkty</a>
-              </Link>
-          </button>
-         
-          <br/>
-
-          <a>Wykonujemy stoły z plastra drewna
-            na zamówienie</a>
-        </div>
-        {/* 2 column */}
         <div className="col-md w-100">
           <Carousel>
             <Carousel.Item>
@@ -75,6 +51,38 @@ const Home = () => {
               </Carousel.Caption>
             </Carousel.Item>
           </Carousel>
+        </div>
+        {/* 2 column */}
+        <div className="col-md w-100" style={{height: "85vh"}}>
+          <div className="box">
+            <div className="row d-flex justify-content-center">
+              <div className="p-2">
+              <Link href="/contact">
+                <button
+                  className="woodbtn"
+                  >
+                    <a className="woodbtn">kontakt</a>
+                </button>
+                </Link>
+              </div>
+              <div className="p-2">
+              <Link href="/products">
+                <button
+                  className="woodbtn"
+                  >
+                    <a className="woodbtn">produkty</a>
+                </button>
+                </Link>
+              </div>
+            </div>
+  
+            <br/>
+
+            <div className="text-center h3" style={{color: "#52340A"}}>
+            <a>Wykonujemy stoły z plastra drewna
+              na zamówienie</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
