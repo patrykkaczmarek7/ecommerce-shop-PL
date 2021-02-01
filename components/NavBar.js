@@ -69,7 +69,7 @@ function NavBar() {
 
     return (
         
-        <nav className="navbar navbar-expand-lg sticky-top navbar-light bg-white shadow-sm px-5 p-3">
+        <nav className="navbar navbar-expand-lg sticky-top navbar-light bg-white shadow-sm px-md-5 px-lg-5 px-xl-5 p-3">
             <Link  href="/">
                 <a className="navbar-brand">e-commerce</a>
             </Link>
