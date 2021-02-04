@@ -9,6 +9,11 @@ body {
 .hometext {
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
+
+.emptycart {
+  background-image: url("/empty_cart.jpg");
+}
+
 .woodbtn {
   color: white;
   font-size: 25px;
