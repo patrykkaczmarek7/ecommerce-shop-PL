@@ -14,6 +14,14 @@ body {
   background-image: url("/empty_cart.jpg");
 }
 
+.reglog {
+  background: url('https://manuo.pl/media/media/Forrest/ponadchodnikami_25.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+
 .woodbtn {
   color: white;
   font-size: 25px;
@@ -25,6 +33,32 @@ body {
   text-align: center;
   text-decoration: none;
 }
+
+.woodbtnlogin {
+  color: white;
+  font-size: 18px;
+  background:url(https://latitudo.org/upload/resize_cache/iblock/036/400_400_140cd750bba9870f18aada2478b24840a/03667702d3e38d534114e83060db6ae9.jpg) no-repeat;
+  width: 98px;
+  height: 48px;
+  border-radius: 50px;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+}
+
+.woodbtnregister {
+  color: white;
+  font-size: 18px;
+  background:url(https://latitudo.org/upload/resize_cache/iblock/036/400_400_140cd750bba9870f18aada2478b24840a/03667702d3e38d534114e83060db6ae9.jpg) no-repeat;
+  width: 130px;
+  height: 48px;
+  border-radius: 50px;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+}
+
+
 .background {
   background: url('https://manuo.pl/media/media/Forrest/ponadchodnikami_1.jpg') no-repeat center center fixed;
   -webkit-background-size: cover;

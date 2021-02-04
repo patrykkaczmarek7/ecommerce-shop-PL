@@ -28,7 +28,7 @@ const ProductItem = ({product, handleCheck}) => {
         return(
             <>
                 <Link href={`create/${product._id}`}>
-                    <a className="btn btn-info"
+                    <a className="btn btn-dark w-100"
                     style={{marginRight: '5px', flex: 1}}>Edytuj</a>
                 </Link>
                 <button className="btn btn-danger"

@@ -5,8 +5,8 @@ import Link from 'next/link'
 const Home = () => {
   return(
     <div 
-    className="container-fluid"
-    style={{height: "85vh"}}
+      className="container-fluid"
+      style={{height: "85vh"}}
     >
       <Head>
         <title>Home</title>
@@ -56,8 +56,9 @@ const Home = () => {
           </Carousel>
         </div>
         {/* 2 column */}
-        <div className="col-md w-100" 
-        style={{height: "85vh"}}
+        <div 
+          className="col-md w-100" 
+          style={{height: "85vh"}}
         >
           <div className="box">
             <div className="row d-flex justify-content-center">
