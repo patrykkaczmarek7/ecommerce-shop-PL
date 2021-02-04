@@ -6,6 +6,9 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
+.hometext {
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
 .woodbtn {
   color: white;
   font-size: 25px;
@@ -16,6 +19,17 @@ body {
   border: none;
   text-align: center;
   text-decoration: none;
+}
+.background {
+  background: url('https://manuo.pl/media/media/Forrest/ponadchodnikami_1.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+
+.contact {
+  background-color: black;
 }
 
 .woodbtn:hover {

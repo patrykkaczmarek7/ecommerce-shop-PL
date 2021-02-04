@@ -9,7 +9,7 @@ const Empty_cart = () => {
         <img 
           className="img-responsive w-100" 
           src="/empty_cart1.jpg" 
-          style={{height: "88vh"}}
+          style={{height: "100vh"}}
         />
       </div>
   )

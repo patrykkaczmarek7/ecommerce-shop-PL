@@ -4,18 +4,21 @@ import Link from 'next/link'
 
 const Home = () => {
   return(
-    <div className="container-fluid">
+    <div 
+    className="container-fluid"
+    style={{height: "85vh"}}
+    >
       <Head>
         <title>Home</title>
       </Head>
       <div className="row">
         {/* 1 column */}
-        <div className="col-md w-100">
+        <div className="col-md w-100 pt-3">
           <Carousel>
             <Carousel.Item>
               <img
                 className="d-block w-100"
-                style={{height: "88vh"}}
+                style={{height: "85vh"}}
                 src="https://files.clickweb.home.pl/1b/38/1b382cea-349c-4bf5-8cd1-d081f10d3e60.jpg"
                 alt="First slide"
               />
@@ -27,7 +30,7 @@ const Home = () => {
             <Carousel.Item>
               <img
                 className="d-block w-100"
-                style={{height: "88vh"}}
+                style={{height: "85vh"}}
                 src="https://a.allegroimg.com/s1024/0ccda5/7046accb4f18937915f14bbb7733"
                 alt="Second slide"
               />
@@ -40,7 +43,7 @@ const Home = () => {
             <Carousel.Item>
               <img
                 className="d-block w-100"
-                style={{height: "88vh"}}
+                style={{height: "85vh"}}
                 src="https://art-madam.pl/zdjecie/stolik-kawowy-stolikzplastradrewna,bdxnwrlrlwpnwlxq.jpg"
                 alt="Third slide"
               />
@@ -53,7 +56,9 @@ const Home = () => {
           </Carousel>
         </div>
         {/* 2 column */}
-        <div className="col-md w-100" style={{height: "88vh"}}>
+        <div className="col-md w-100" 
+        style={{height: "85vh"}}
+        >
           <div className="box">
             <div className="row d-flex justify-content-center">
               <div className="p-2">
@@ -79,7 +84,7 @@ const Home = () => {
             <br/>
 
             <div className="text-center h3" style={{color: "#52340A"}}>
-            <a>Wykonujemy stoły z plastra drewna
+            <a className="hometext">Wykonujemy stoły z plastra drewna
               na zamówienie</a>
             </div>
           </div>

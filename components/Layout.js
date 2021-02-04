@@ -5,7 +5,7 @@ import Modal from './Modal'
 
 function Layout({children}) {
     return (
-        <div className="containter-fluid">
+        <div>
             <NavBar />
             <Notify />
             <Modal />
