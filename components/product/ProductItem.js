@@ -14,7 +14,7 @@ const ProductItem = ({product, handleCheck}) => {
                     <a className="btn btn-dark"
                     style={{marginRight: '5px', flex: 1}}>Pokaż</a>
                 </Link>
-                <button className="btn btn-success"
+                <button className="woodbtnproductsbuy"
                 style={{marginLeft: '5px', flex: 1}}
                 disabled={product.inStock === 0 ? true : false} 
                 onClick={() => dispatch(addToCart(product, cart))} >

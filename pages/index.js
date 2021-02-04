@@ -85,7 +85,7 @@ const Home = () => {
             <br/>
 
             <div className="text-center h3" style={{color: "#52340A"}}>
-            <a className="hometext">Wykonujemy stoły z plastra drewna
+            <a>Wykonujemy stoły z plastra drewna
               na zamówienie</a>
             </div>
           </div>
