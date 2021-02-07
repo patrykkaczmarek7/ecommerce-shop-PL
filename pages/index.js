@@ -24,7 +24,7 @@ const Home = () => {
               />
               <Carousel.Caption>
                 <h3>First slide label</h3>
-                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                <i>Nulla vitae elit libero, a pharetra augue mollis interdum.</i>
               </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
@@ -37,7 +37,7 @@ const Home = () => {
 
               <Carousel.Caption>
                 <h3>Second slide label</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <i>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</i>
               </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
@@ -50,7 +50,7 @@ const Home = () => {
 
               <Carousel.Caption>
                 <h3>Third slide label</h3>
-                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                <i>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</i>
               </Carousel.Caption>
             </Carousel.Item>
           </Carousel>
@@ -85,8 +85,8 @@ const Home = () => {
             <br/>
 
             <div className="text-center h3" style={{color: "#52340A"}}>
-            <a>Wykonujemy stoły z plastra drewna
-              na zamówienie</a>
+            <i>Wykonujemy stoły z plastra drewna
+              na zamówienie</i>
             </div>
           </div>
         </div>

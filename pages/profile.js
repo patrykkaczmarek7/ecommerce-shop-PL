@@ -87,7 +87,7 @@ const Profile = () => {
 
     if(!auth.user) return null;
     return( 
-        <div className="profile_page">
+        <div className="profile_page p-5">
             <Head>
                 <title>Konto</title>
             </Head>
@@ -133,7 +133,7 @@ const Profile = () => {
                         placeholder="" onChange={handleChange} />
                     </div>
 
-                    <button className="btn btn-info" disabled={notify.loading}
+                    <button className="btn btn-dark" disabled={notify.loading}
                     onClick={handleUpdateProfile}>
                         Zaktualizuj
                     </button>

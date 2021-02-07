@@ -161,7 +161,7 @@ const ProductsManager = () => {
                         </select>
                     </div>
 
-                    <button type="submit" className="btn btn-info my-2 px-4">
+                    <button type="submit" className="btn btn-dark my-2 px-4">
                         {onEdit ? 'Zaktualizuj': 'Dodaj'}
                     </button>
 

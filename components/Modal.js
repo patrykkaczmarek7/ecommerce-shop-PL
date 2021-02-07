@@ -75,8 +75,8 @@ const Modal = () => {
                     Na pewno chcesz usunąć?
                 </div>
                 <div className="modal-footer">
-                    <button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={handleSubmit}>Tak</button>
-                    <button type="button" className="btn btn-primary" data-dismiss="modal">Anuluj</button>
+                    <button type="button" className="btn btn-danger" data-dismiss="modal" onClick={handleSubmit}>Tak</button>
+                    <button type="button" className="btn btn-dark" data-dismiss="modal">Anuluj</button>
                 </div>
                 </div>
             </div>
