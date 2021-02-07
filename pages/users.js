@@ -36,7 +36,7 @@ const Users = () => {
                                 <th>
                                     <img src={user.avatar} alt={user.avatar}
                                     style={{
-                                        width: '30px', height: '30px', 
+                                        borderRadius: '50%', width: '35px', height: '35px', 
                                         overflow: 'hidden', objectFit: 'cover'
                                     }} />
                                 </th>

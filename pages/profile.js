@@ -87,14 +87,14 @@ const Profile = () => {
 
     if(!auth.user) return null;
     return( 
-        <div className="profile_page p-5">
+        <div className="profile_page pl-5 pr-5">
             <Head>
                 <title>Konto</title>
             </Head>
 
             <section className="row text-secondary my-3">
                 <div className="col-md-4">
-                    <h3 className="text-center text-uppercase">
+                    <h3 className="text-center">
                         {auth.user.role === 'user' ? 'Konto użytkownika' : 'Administrator'}
                     </h3>
 
@@ -140,7 +140,7 @@ const Profile = () => {
                 </div>
 
                 <div className="col-md-8">
-                    <h3 className="text-uppercase">Zamówienia</h3>
+                    <h3>Zamówienia:</h3>
 
                     <div className="my-3 table-responsive">
                         <table className="table-bordered table-hover w-100 text-uppercase"

@@ -97,7 +97,7 @@ const Cart = () => {
     return <Empty_cart />
 
     return(
-      <div className="row mx-auto">
+      <div className="row mx-auto pl-5 pr-5">
         <Head>
           <title>Koszyk</title>
         </Head>

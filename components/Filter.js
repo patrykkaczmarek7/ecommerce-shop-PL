@@ -28,7 +28,7 @@ const Filter = ({state}) => {
     },[search])
 
     return (
-        <div className="input-group">
+        <div className="input-group pt-4 pl-5 pr-5">
             <div className="input-group-prepend col-md-2 px-0 mt-2">
                 <select className="custom-select text-capitalize"
                 value={category} onChange={handleCategory}>

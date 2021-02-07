@@ -112,7 +112,7 @@ const ProductsManager = () => {
     }
 
     return(
-        <div className="products_manager">
+        <div className="products_manager pl-5 pr-5">
             <Head>
                 <title>Zarządzanie produktami</title>
             </Head>

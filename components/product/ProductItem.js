@@ -48,6 +48,8 @@ const ProductItem = ({product, handleCheck}) => {
     }
 
     return(
+        <div className="pl-5 pr-5">
+
         <div className="card" style={{ width: '18rem' }}>
             {
                 auth.user && auth.user.role === 'admin' &&
@@ -79,6 +81,7 @@ const ProductItem = ({product, handleCheck}) => {
                     {!auth.user || auth.user.role !== "admin" ? userLink() : adminLink()}
                 </div>
             </div>
+        </div>
         </div>
     )
 }

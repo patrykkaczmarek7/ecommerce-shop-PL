@@ -52,7 +52,7 @@ const Categories = () => {
                 placeholder="Dodaj nową kategorię" value={name}
                 onChange={e => setName(e.target.value)} />
 
-                <button className="btn btn-secondary ml-1"
+                <button className="btn btn-dark ml-1"
                 onClick={createCategory}>
                     {id ? "Zaktualizuj": "Dodaj"}
                 </button>
