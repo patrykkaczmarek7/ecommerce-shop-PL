@@ -17,7 +17,7 @@ const contact = () => {
                   <h1 className="text-center">Kontakt</h1>
                   <hr/>
                   <p className="lead">Godziny pracy: pn - pią 8:00 - 16:00</p>
-                  <p className="lead">Telefon: +48 123 123 123</p>
+                  <p className="lead">Telefon: +48 123 123 125</p>
                   <p className="lead mb-0">e-mail: example@table.com</p>
                 </div>
               </div>
