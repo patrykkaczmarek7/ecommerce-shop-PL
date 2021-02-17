@@ -1,9 +1,13 @@
+import React, { useEffect, useState } from 'react'
 import Head from 'next/head'
 import { Carousel } from 'react-bootstrap'
 import Link from 'next/link'
+import { Animate, AnimateKeyframes, AnimateGroup } from "react-simple-animate"
 
 const Home = () => {
+
   return(
+    <Animate play start={{ opacity: 0, transform: 'translateX(-40px)' }} end={{ opacity: 1, transform: 'translateX(0)' }}>
     <div 
       className="container-fluid"
       style={{height: "85vh"}}
@@ -11,6 +15,7 @@ const Home = () => {
       <Head>
         <title>Home</title>
       </Head>
+
       <div className="row">
         {/* 1 column */}
         <div className="col-md w-100 pt-3">
@@ -92,6 +97,7 @@ const Home = () => {
         </div>
       </div>
     </div>
+    </Animate>
   )
 }
 
