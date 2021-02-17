@@ -7,7 +7,7 @@ import { Animate, AnimateKeyframes, AnimateGroup } from "react-simple-animate"
 const Home = () => {
 
   return(
-    <Animate play start={{ opacity: 0, transform: 'translateX(-40px)' }} end={{ opacity: 1, transform: 'translateX(0)' }}>
+    <Animate play start={{ opacity: 0, transform: 'translateY(-40px)' }} end={{ opacity: 1, transform: 'translateY(0)' }}>
     <div 
       className="container-fluid"
       style={{height: "85vh"}}
