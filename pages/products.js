@@ -7,6 +7,7 @@ import ProductItem from '../components/product/ProductItem'
 import filterSearch from '../utils/filterSearch'
 import {useRouter} from 'next/router'
 import Filter from '../components/Filter'
+import { Animate } from 'react-simple-animate'
 
 const Home = (props) => {
   const [products, setProducts] = useState(props.products)
@@ -61,50 +62,52 @@ const Home = (props) => {
   }
 
   return(
-    <div className="home_page">
-      <Head>
-        <title>Produkty</title>
-      </Head>
+    <Animate play start={{ opacity: 0, transform: 'translateY(-40px)' }} end={{ opacity: 1, transform: 'translateY(0)' }}>
+      <div className="home_page">
+        <Head>
+          <title>Produkty</title>
+        </Head>
 
-      <Filter state={state} />
+        <Filter state={state} />
 
-      {
-        auth.user && auth.user.role === 'admin' &&
-        <div className="pl-5 pt-2">
-
-        <div className="delete_all btn btn-danger mt-2" style={{marginBottom: '-10px'}}>
-          <input type="checkbox" checked={isCheck} onChange={handleCheckALL}
-          style={{width: '25px', height: '25px', transform: 'translateY(8px)'}} />
-
-          <button className="btn btn-danger ml-2"
-          data-toggle="modal" data-target="#exampleModal"
-          onClick={handleDeleteAll}>
-            Usuń wszystko
-          </button>
-        </div>
-        </div>
-      }
-
-      <div className="products">
         {
-          products.length === 0 
-          ? <h2 className="pl-5 pt-3">Brak produktów</h2>
+          auth.user && auth.user.role === 'admin' &&
+          <div className="pl-5 pt-2">
 
-          : products.map(product => (
-            <ProductItem key={product._id} product={product} handleCheck={handleCheck} />
-          ))
+          <div className="delete_all btn btn-danger mt-2" style={{marginBottom: '-10px'}}>
+            <input type="checkbox" checked={isCheck} onChange={handleCheckALL}
+            style={{width: '25px', height: '25px', transform: 'translateY(8px)'}} />
+
+            <button className="btn btn-danger ml-2"
+            data-toggle="modal" data-target="#exampleModal"
+            onClick={handleDeleteAll}>
+              Usuń wszystko
+            </button>
+          </div>
+          </div>
         }
-      </div>
+
+        <div className="products">
+          {
+            products.length === 0 
+            ? <h2 className="pl-5 pt-3">Brak produktów</h2>
+
+            : products.map(product => (
+              <ProductItem key={product._id} product={product} handleCheck={handleCheck} />
+            ))
+          }
+        </div>
+        
+        {
+          props.result < page * 6 ? ""
+          : <button className="btn btn-outline-info d-block mx-auto mb-4"
+          onClick={handleLoadmore}>
+            Więcej..
+          </button>
+        }
       
-      {
-        props.result < page * 6 ? ""
-        : <button className="btn btn-outline-info d-block mx-auto mb-4"
-        onClick={handleLoadmore}>
-          Więcej..
-        </button>
-      }
-    
-    </div>
+      </div>
+    </Animate>
   )
 }
 

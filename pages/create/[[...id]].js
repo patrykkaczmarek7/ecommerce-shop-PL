@@ -4,6 +4,7 @@ import {DataContext} from '../../store/GlobalState'
 import {imageUpload} from '../../utils/imageUpload'
 import {postData, getData, putData} from '../../utils/fetchData'
 import {useRouter} from 'next/router'
+import { Animate } from 'react-simple-animate'
 
 const ProductsManager = () => {
     const initialState = {
@@ -112,94 +113,96 @@ const ProductsManager = () => {
     }
 
     return(
-        <div className="products_manager pl-5 pr-5">
-            <Head>
-                <title>Zarządzanie produktami</title>
-            </Head>
-            <form className="row" onSubmit={handleSubmit}>
-                <div className="col-md-6">
-                    
-                    <input type="text" name="title" value={title}
-                    placeholder="Nazwa produktu" className="d-block my-4 w-100 p-2"
-                    onChange={handleChangeInput} />
+        <Animate play start={{ opacity: 0, transform: 'translateY(-40px)' }} end={{ opacity: 1, transform: 'translateY(0)' }}>
+            <div className="products_manager pl-5 pr-5">
+                <Head>
+                    <title>Zarządzanie produktami</title>
+                </Head>
+                <form className="row" onSubmit={handleSubmit}>
+                    <div className="col-md-6">
+                        
+                        <input type="text" name="title" value={title}
+                        placeholder="Nazwa produktu" className="d-block my-4 w-100 p-2"
+                        onChange={handleChangeInput} />
 
-                    <div className="row">
-                        <div className="col-sm-6">
-                            <label htmlFor="price">Cena</label>
-                            <input type="number" name="price" value={price}
-                            placeholder="Price" className="d-block w-100 p-2"
-                            onChange={handleChangeInput} />
+                        <div className="row">
+                            <div className="col-sm-6">
+                                <label htmlFor="price">Cena</label>
+                                <input type="number" name="price" value={price}
+                                placeholder="Price" className="d-block w-100 p-2"
+                                onChange={handleChangeInput} />
+                            </div>
+
+                            <div className="col-sm-6">
+                                <label htmlFor="price">Dostępne</label>
+                                <input type="number" name="inStock" value={inStock}
+                                placeholder="inStock" className="d-block w-100 p-2"
+                                onChange={handleChangeInput} />
+                            </div>
                         </div>
 
-                        <div className="col-sm-6">
-                            <label htmlFor="price">Dostępne</label>
-                            <input type="number" name="inStock" value={inStock}
-                            placeholder="inStock" className="d-block w-100 p-2"
-                            onChange={handleChangeInput} />
+                        <textarea name="description" id="description" cols="30" rows="4"
+                        placeholder="Description" onChange={handleChangeInput}
+                        className="d-block my-4 w-100 p-2" value={description} />
+
+                        <textarea name="content" id="content" cols="30" rows="6"
+                        placeholder="Content" onChange={handleChangeInput}
+                        className="d-block my-4 w-100 p-2" value={content} />
+
+                        <div className="input-group-prepend px-0 my-2">
+                            <select name="category" id="category" value={category}
+                            onChange={handleChangeInput} className="custom-select text-capitalize">
+                                <option value="all">Wszystkie produkty</option>
+                                {
+                                    categories.map(item => (
+                                        <option key={item._id} value={item._id}>
+                                            {item.name}
+                                        </option>
+                                    ))
+                                }
+                            </select>
                         </div>
+
+                        <button type="submit" className="btn btn-dark my-2 px-4">
+                            {onEdit ? 'Zaktualizuj': 'Dodaj'}
+                        </button>
+
                     </div>
 
-                    <textarea name="description" id="description" cols="30" rows="4"
-                    placeholder="Description" onChange={handleChangeInput}
-                    className="d-block my-4 w-100 p-2" value={description} />
+                    <div className="col-md-6 my-4">
+                        <div className="input-group mb-3">
+                            <div className="input-group-prepend">
+                                <span className="input-group-text">Dodaj zdjęcie:</span>
+                            </div>
+                            <div className="custom-file border rounded">
+                                <input type="file" className="custom-file-input"
+                                onChange={handleUploadInput} multiple accept="image/*" />
+                            </div>
 
-                    <textarea name="content" id="content" cols="30" rows="6"
-                    placeholder="Content" onChange={handleChangeInput}
-                    className="d-block my-4 w-100 p-2" value={content} />
+                        </div> 
 
-                    <div className="input-group-prepend px-0 my-2">
-                        <select name="category" id="category" value={category}
-                        onChange={handleChangeInput} className="custom-select text-capitalize">
-                            <option value="all">Wszystkie produkty</option>
+                        <div className="row img-up mx-0">
                             {
-                                categories.map(item => (
-                                    <option key={item._id} value={item._id}>
-                                        {item.name}
-                                    </option>
+                                images.map((img, index) => (
+                                    <div key={index} className="file_img my-1">
+                                        <img src={img.url ? img.url : URL.createObjectURL(img)}
+                                        alt="" className="img-thumbnail rounded" />
+
+                                        <span onClick={() => deleteImage(index)}>X</span>
+                                    </div>
                                 ))
                             }
-                        </select>
+                        </div>
+                            
+
                     </div>
 
-                    <button type="submit" className="btn btn-dark my-2 px-4">
-                        {onEdit ? 'Zaktualizuj': 'Dodaj'}
-                    </button>
+                
+                </form>
 
-                </div>
-
-                <div className="col-md-6 my-4">
-                    <div className="input-group mb-3">
-                        <div className="input-group-prepend">
-                            <span className="input-group-text">Dodaj zdjęcie:</span>
-                        </div>
-                        <div className="custom-file border rounded">
-                            <input type="file" className="custom-file-input"
-                            onChange={handleUploadInput} multiple accept="image/*" />
-                        </div>
-
-                    </div> 
-
-                    <div className="row img-up mx-0">
-                        {
-                            images.map((img, index) => (
-                                <div key={index} className="file_img my-1">
-                                    <img src={img.url ? img.url : URL.createObjectURL(img)}
-                                     alt="" className="img-thumbnail rounded" />
-
-                                     <span onClick={() => deleteImage(index)}>X</span>
-                                </div>
-                            ))
-                        }
-                    </div>
-                        
-
-                </div>
-
-               
-            </form>
-
-            
-        </div>
+                
+            </div>
+        </Animate>
     )
 }
 

@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { getData, postData } from '../utils/fetchData'
 import { useRouter } from 'next/router'
 import Empty_cart from '../components/Empty_cart'
+import { Animate } from 'react-simple-animate'
 
 
 const Cart = () => {
@@ -98,49 +99,51 @@ const Cart = () => {
     return <Empty_cart />
 
     return(
-      <div className="row mx-auto pl-5 pr-5">
-        <Head>
-          <title>Koszyk</title>
-        </Head>
+      <Animate play start={{ opacity: 0, transform: 'translateY(-40px)' }} end={{ opacity: 1, transform: 'translateY(0)' }}>
+        <div className="row mx-auto pl-5 pr-5">
+          <Head>
+            <title>Koszyk</title>
+          </Head>
 
-        <div className="col-md-8 text-secondary table-responsive my-3">
-          <h2 className="text-uppercase">Koszyk</h2>
+          <div className="col-md-8 text-secondary table-responsive my-3">
+            <h2 className="text-uppercase">Koszyk</h2>
 
-          <table className="table my-3">
-            <tbody>
-              {
-                cart.map(item => (
-                  <CartItem key={item._id} item={item} dispatch={dispatch} cart={cart} />
-                ))
-              }
-            </tbody>
-          </table>
+            <table className="table my-3">
+              <tbody>
+                {
+                  cart.map(item => (
+                    <CartItem key={item._id} item={item} dispatch={dispatch} cart={cart} />
+                  ))
+                }
+              </tbody>
+            </table>
+          </div>
+
+          <div className="col-md-4 my-3 text-right text-uppercase text-secondary">
+              <form>
+                <h2>Dostawa</h2>
+
+                <label htmlFor="address">Adres</label>
+                <input type="text" name="address" id="address"
+                className="form-control mb-2" value={address}
+                onChange={e => setAddress(e.target.value)} />
+
+                <label htmlFor="mobile">Telefon</label>
+                <input type="text" name="mobile" id="mobile"
+                className="form-control mb-2" value={mobile}
+                onChange={e => setMobile(e.target.value)} />
+              </form>
+
+              <h3>Total: <span className="text-danger">${total}</span></h3>
+
+              
+              <Link href={auth.user ? '#!' : '/signin'}>
+                <a className="btn btn-dark my-2" onClick={handlePayment}>Kontynuuj płatność</a>
+              </Link>
+              
+          </div>
         </div>
-
-        <div className="col-md-4 my-3 text-right text-uppercase text-secondary">
-            <form>
-              <h2>Dostawa</h2>
-
-              <label htmlFor="address">Adres</label>
-              <input type="text" name="address" id="address"
-              className="form-control mb-2" value={address}
-              onChange={e => setAddress(e.target.value)} />
-
-              <label htmlFor="mobile">Telefon</label>
-              <input type="text" name="mobile" id="mobile"
-              className="form-control mb-2" value={mobile}
-              onChange={e => setMobile(e.target.value)} />
-            </form>
-
-            <h3>Total: <span className="text-danger">${total}</span></h3>
-
-            
-            <Link href={auth.user ? '#!' : '/signin'}>
-              <a className="btn btn-dark my-2" onClick={handlePayment}>Kontynuuj płatność</a>
-            </Link>
-            
-        </div>
-      </div>
+      </Animate>
     )
   }
   

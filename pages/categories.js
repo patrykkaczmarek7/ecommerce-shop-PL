@@ -2,7 +2,8 @@ import Head from 'next/head'
 import {useContext, useState} from 'react'
 import {DataContext} from '../store/GlobalState'
 import {updateItem} from '../store/Actions'
-import { postData, putData } from "../utils/fetchData";
+import { postData, putData } from "../utils/fetchData"
+import { Animate } from 'react-simple-animate'
 
 const Categories = () => {
     const [name, setName] = useState('')
@@ -42,49 +43,51 @@ const Categories = () => {
     }
 
     return(
-        <div className="col-md-6 mx-auto my-3">
-            <Head>
-                <title>Kategorie</title>
-            </Head>
+        <Animate play start={{ opacity: 0, transform: 'translateY(-10px)' }} end={{ opacity: 1, transform: 'translateY(0)' }}>
+            <div className="col-md-6 mx-auto my-3">
+                <Head>
+                    <title>Kategorie</title>
+                </Head>
 
-            <div className="input-group mb-3">
-                <input type="text" className="form-control"
-                placeholder="Dodaj nową kategorię" value={name}
-                onChange={e => setName(e.target.value)} />
+                <div className="input-group mb-3">
+                    <input type="text" className="form-control"
+                    placeholder="Dodaj nową kategorię" value={name}
+                    onChange={e => setName(e.target.value)} />
 
-                <button className="btn btn-dark ml-1"
-                onClick={createCategory}>
-                    {id ? "Zaktualizuj": "Dodaj"}
-                </button>
-            </div>
+                    <button className="btn btn-dark ml-1"
+                    onClick={createCategory}>
+                        {id ? "Zaktualizuj": "Dodaj"}
+                    </button>
+                </div>
 
-            {
-                categories.map(catogory => (
-                    <div key={catogory._id} className="card my-2 text-capitalize">
-                        <div className="card-body d-flex justify-content-between">
-                            {catogory.name}
+                {
+                    categories.map(catogory => (
+                        <div key={catogory._id} className="card my-2 text-capitalize">
+                            <div className="card-body d-flex justify-content-between">
+                                {catogory.name}
 
-                            <div style={{cursor: 'pointer'}}>
-                                <i className="fas fa-edit mr-2 text-info"
-                                onClick={() => handleEditCategory(catogory)}></i>
+                                <div style={{cursor: 'pointer'}}>
+                                    <i className="fas fa-edit mr-2 text-info"
+                                    onClick={() => handleEditCategory(catogory)}></i>
 
-                                <i className="fas fa-trash-alt text-danger"
-                                data-toggle="modal" data-target="#exampleModal"
-                                onClick={() => dispatch({
-                                    type: 'ADD_MODAL',
-                                    payload: [{ 
-                                        data: categories, id: catogory._id, 
-                                        title: catogory.name, type: 'ADD_CATEGORIES' 
-                                    }]
-                                })} ></i>
+                                    <i className="fas fa-trash-alt text-danger"
+                                    data-toggle="modal" data-target="#exampleModal"
+                                    onClick={() => dispatch({
+                                        type: 'ADD_MODAL',
+                                        payload: [{ 
+                                            data: categories, id: catogory._id, 
+                                            title: catogory.name, type: 'ADD_CATEGORIES' 
+                                        }]
+                                    })} ></i>
+                                </div>
+
                             </div>
-
                         </div>
-                    </div>
-                ))
-            }
-           
-        </div>
+                    ))
+                }
+            
+            </div>
+        </Animate>
     )
 }
 

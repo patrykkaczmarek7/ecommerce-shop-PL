@@ -1,8 +1,10 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import { Animate } from 'react-simple-animate'
 
 const Empty_cart = () => {
   return(
+    <Animate play start={{ opacity: 0, transform: 'translateY(-40px)' }} end={{ opacity: 1, transform: 'translateY(0)' }}>
       <div className="emptycart container-fluid">
         <Head>
           <title>Zacznij zakupy</title>
@@ -30,6 +32,7 @@ const Empty_cart = () => {
           </div>
         </div>
       </div>
+    </Animate>
   )
 }
 

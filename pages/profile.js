@@ -5,8 +5,8 @@ import Link from 'next/link'
 
 import valid from '../utils/valid'
 import { patchData } from '../utils/fetchData'
-
 import {imageUpload} from '../utils/imageUpload'
+import { Animate } from 'react-simple-animate'
 
 const Profile = () => {
     const initialSate = {
@@ -86,113 +86,115 @@ const Profile = () => {
 
 
     if(!auth.user) return null;
-    return( 
-        <div className="profile_page pl-5 pr-5">
-            <Head>
-                <title>Konto</title>
-            </Head>
+    return(
+        <Animate play start={{ opacity: 0, transform: 'translateY(-40px)' }} end={{ opacity: 1, transform: 'translateY(0)' }}>
+            <div className="profile_page pl-5 pr-5">
+                <Head>
+                    <title>Konto</title>
+                </Head>
 
-            <section className="row text-secondary my-3">
-                <div className="col-md-4">
-                    <h3 className="text-center">
-                        {auth.user.role === 'user' ? 'Konto użytkownika' : 'Administrator'}
-                    </h3>
+                <section className="row text-secondary my-3">
+                    <div className="col-md-4">
+                        <h3 className="text-center">
+                            {auth.user.role === 'user' ? 'Konto użytkownika' : 'Administrator'}
+                        </h3>
 
-                    <div className="avatar">
-                        <img src={avatar ? URL.createObjectURL(avatar) : auth.user.avatar} 
-                        alt="avatar" />
-                        <span>
-                            <i className="fas fa-camera"></i>
-                            <p>Zmień</p>
-                            <input type="file" name="file" id="file_up"
-                            accept="image/*" onChange={changeAvatar} />
-                        </span>
+                        <div className="avatar">
+                            <img src={avatar ? URL.createObjectURL(avatar) : auth.user.avatar} 
+                            alt="avatar" />
+                            <span>
+                                <i className="fas fa-camera"></i>
+                                <p>Zmień</p>
+                                <input type="file" name="file" id="file_up"
+                                accept="image/*" onChange={changeAvatar} />
+                            </span>
+                        </div>
+
+                        <div className="form-group">
+                            <label htmlFor="name">Imię i nazwisko</label>
+                            <input type="text" name="name" value={name} className="form-control"
+                            placeholder="Your name" onChange={handleChange} />
+                        </div>
+
+                        <div className="form-group">
+                            <label htmlFor="email">E-mail</label>
+                            <input type="text" name="email" defaultValue={auth.user.email} 
+                            className="form-control" disabled={true} />
+                        </div>
+
+                        <div className="form-group">
+                            <label htmlFor="password">Nowe hasło</label>
+                            <input type="password" name="password" value={password} className="form-control"
+                            placeholder="" onChange={handleChange} />
+                        </div>
+
+                        <div className="form-group">
+                            <label htmlFor="cf_password">Potwierdź nowe hasło</label>
+                            <input type="password" name="cf_password" value={cf_password} className="form-control"
+                            placeholder="" onChange={handleChange} />
+                        </div>
+
+                        <button className="btn btn-dark" disabled={notify.loading}
+                        onClick={handleUpdateProfile}>
+                            Zaktualizuj
+                        </button>
                     </div>
 
-                    <div className="form-group">
-                        <label htmlFor="name">Imię i nazwisko</label>
-                        <input type="text" name="name" value={name} className="form-control"
-                        placeholder="Your name" onChange={handleChange} />
+                    <div className="col-md-8">
+                        <h3>Zamówienia:</h3>
+
+                        <div className="my-3 table-responsive">
+                            <table className="table-bordered table-hover w-100 text-uppercase"
+                            style={{minWidth: '600px', cursor: 'pointer'}}>
+                                <thead className="bg-light font-weight-bold">
+                                    <tr>
+                                        <td className="p-2">ID</td>
+                                        <td className="p-2">Data</td>
+                                        <td className="p-2">Kwota</td>
+                                        <td className="p-2">Dostarczone</td>
+                                        <td className="p-2">Zapłacone</td>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    {
+                                        orders.map(order => (
+                                            <tr key={order._id}>
+                                                <td className="p-2">
+                                                    <Link href={`/order/${order._id}`}>
+                                                        <a>{order._id}</a>
+                                                    </Link>
+                                                    
+                                                </td>
+                                                <td className="p-2">
+                                                    {new Date(order.createdAt).toLocaleDateString()}
+                                                </td>
+                                                <td className="p-2">${order.total}</td>
+                                                <td className="p-2">
+                                                    {
+                                                        order.delivered
+                                                        ? <i className="fas fa-check text-success"></i>
+                                                        : <i className="fas fa-times text-danger"></i>
+                                                    }
+                                                </td>
+                                                <td className="p-2">
+                                                    {
+                                                        order.paid
+                                                        ? <i className="fas fa-check text-success"></i>
+                                                        : <i className="fas fa-times text-danger"></i>
+                                                    }
+                                                </td>
+                                            </tr> 
+                                        ))
+                                    }
+                                </tbody>
+
+                            </table>
+                        </div>
                     </div>
-
-                    <div className="form-group">
-                        <label htmlFor="email">E-mail</label>
-                        <input type="text" name="email" defaultValue={auth.user.email} 
-                        className="form-control" disabled={true} />
-                    </div>
-
-                    <div className="form-group">
-                        <label htmlFor="password">Nowe hasło</label>
-                        <input type="password" name="password" value={password} className="form-control"
-                        placeholder="" onChange={handleChange} />
-                    </div>
-
-                    <div className="form-group">
-                        <label htmlFor="cf_password">Potwierdź nowe hasło</label>
-                        <input type="password" name="cf_password" value={cf_password} className="form-control"
-                        placeholder="" onChange={handleChange} />
-                    </div>
-
-                    <button className="btn btn-dark" disabled={notify.loading}
-                    onClick={handleUpdateProfile}>
-                        Zaktualizuj
-                    </button>
-                </div>
-
-                <div className="col-md-8">
-                    <h3>Zamówienia:</h3>
-
-                    <div className="my-3 table-responsive">
-                        <table className="table-bordered table-hover w-100 text-uppercase"
-                        style={{minWidth: '600px', cursor: 'pointer'}}>
-                            <thead className="bg-light font-weight-bold">
-                                <tr>
-                                    <td className="p-2">ID</td>
-                                    <td className="p-2">Data</td>
-                                    <td className="p-2">Kwota</td>
-                                    <td className="p-2">Dostarczone</td>
-                                    <td className="p-2">Zapłacone</td>
-                                </tr>
-                            </thead>
-
-                            <tbody>
-                                {
-                                    orders.map(order => (
-                                        <tr key={order._id}>
-                                            <td className="p-2">
-                                                <Link href={`/order/${order._id}`}>
-                                                    <a>{order._id}</a>
-                                                </Link>
-                                                
-                                            </td>
-                                            <td className="p-2">
-                                                {new Date(order.createdAt).toLocaleDateString()}
-                                            </td>
-                                            <td className="p-2">${order.total}</td>
-                                            <td className="p-2">
-                                                {
-                                                    order.delivered
-                                                    ? <i className="fas fa-check text-success"></i>
-                                                    : <i className="fas fa-times text-danger"></i>
-                                                }
-                                            </td>
-                                            <td className="p-2">
-                                                {
-                                                    order.paid
-                                                    ? <i className="fas fa-check text-success"></i>
-                                                    : <i className="fas fa-times text-danger"></i>
-                                                }
-                                            </td>
-                                        </tr> 
-                                    ))
-                                }
-                            </tbody>
-
-                        </table>
-                    </div>
-                </div>
-            </section>
-        </div>
+                </section>
+            </div>
+        </Animate> 
     )
 }
 
